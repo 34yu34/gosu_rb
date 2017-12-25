@@ -4,7 +4,7 @@ require_relative 'board'
 require_relative 'mouse'
 include Gosu
 
-class Background < Window
+class Game < Window
   WIDTH = 1280
   HEIGHT = 720
 

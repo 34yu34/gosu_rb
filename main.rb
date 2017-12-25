@@ -1,3 +1,3 @@
-require_relative 'gosu/background'
+require_relative 'gosu/game'
 
-Background.new.show
+Game.new.show
