@@ -5,14 +5,15 @@ class Tile
   def initialize(x1, x2, y1, y2, colorBack, colorLine)
     @colorBack = colorBack
     @colorLine = colorLine
-    @x1 = x1 + 1
-    @x2 = x2 - 1
-    @y1 = y1 + 1
-    @y2 = y2 - 1
-    draw_quad(@x1, @y1, colorBack,
-              @x1, @y2, colorBack,
-              @x2, @y2, colorBack,
-              @x2, @y1, colorBack, 0)
+    @x1 = x1
+    @x2 = x2
+    @y1 = y1
+    @y2 = y2
+    draw_quad(x1, y1, colorBack,
+              x1, y2, colorBack,
+              x2, y2, colorBack,
+              x2, y1, colorBack, 0)
+
     draw_line(x1, y1, colorLine,
               x1, y2, colorLine, 0)
     draw_line(x1, y2, colorLine,
@@ -29,8 +30,7 @@ class Tile
       draw_quad(@x1, @y1, color,
                 @x1, @y2, color,
                 @x2, @y2, color,
-                @x2, @y1, color,
-                1)
+                @x2, @y1, color, 1)
     end
   end
 end

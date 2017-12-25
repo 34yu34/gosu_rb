@@ -5,7 +5,7 @@ include Gosu
 class Board
   def initialize(nb_col, width, height)
     colorLine = Color::RED
-    colorBack
+    colorBack = Color::WHITE
     @width_x = width / nb_col
     @width_y = height / (nb_col + 2)
     @tile = Array.new(nb_col) { Array.new(nb_col) { nil } }
