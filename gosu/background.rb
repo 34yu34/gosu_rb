@@ -1,6 +1,7 @@
 require 'rubygems'
 require 'gosu'
 require_relative 'board'
+require_relative 'mouse'
 include Gosu
 
 class Background < Window
@@ -15,9 +16,6 @@ class Background < Window
   def draw
     b = Board.new(8, WIDTH, HEIGHT)
     b.hover(mouse_x, mouse_y)
-    draw_triangle(mouse_x, mouse_y, Color::WHITE,
-                  mouse_x + 15, mouse_y, Color::RED,
-                  mouse_x, mouse_y + 15, Color::GREEN,
-                  10)
+    Mouse.new(mouse_x, mouse_y)
   end
 end
