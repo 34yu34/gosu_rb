@@ -4,7 +4,7 @@ include Gosu
 
 class Board
   def initialize(nb_col, width, height)
-    color = Color::WHITE
+    color = Color::RED
     @width_x = width / nb_col
     @width_y = height / (nb_col + 2)
     @tile = Array.new(nb_col) { Array.new(nb_col) { nil } }
@@ -15,10 +15,6 @@ class Board
         y1 = j * @width_y
         y2 = (j + 1) * @width_y
         @tile[i][j - 1] = Tile.new(x1, x2, y1, y2, color)
-        color = color == Color::BLACK ? Color::WHITE : Color::BLACK
-      end
-      if nb_col.even?
-        color = color == Color::BLACK ? Color::WHITE : Color::BLACK
       end
     end
   end
