@@ -7,9 +7,9 @@ class Menu
     @button = []
     @mouse_x = mouse_x
     @mouse_y = mouse_y
-    @button << Buton.new('Battle Legend', height / 4, width, 0, 0                      , Affichage::MENU)
-    @button << Buton.new('Start'        , height / 8, width, 0, @button.last.next_pos_y, Affichage::GAME)
-    @button << Buton.new('Quit'         , height / 8, width, 0, @button.last.next_pos_y, Affichage::QUIT)
+    @button << Buton.new('Battle Legend', height / 4, width, 0, 0, Affichage::MENU)
+    @button << Buton.new('Start', height / 8, width / 4, center(width, width / 4), @button.last.next_pos_y, Affichage::GAME)
+    @button << Buton.new('Quit', height / 8, width / 4, center(width, width / 4), @button.last.next_pos_y, Affichage::QUIT)
   end
 
   def next_page(current_page)
@@ -21,5 +21,6 @@ class Menu
   end
 
   def center(width, button_width)
-    return (width-button_width)/2
+    (width - button_width) / 2
+  end
 end
