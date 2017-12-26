@@ -7,6 +7,13 @@ require_relative 'input'
 
 include Gosu
 
+module Affichage
+  MENU = 1
+  GAME = 2
+  QUIT = 3
+end
+
+
 class Game < Window
   WIDTH = 1280
   HEIGHT = 720
@@ -21,13 +28,14 @@ class Game < Window
     mouse = Mouse.new(mouse_x, mouse_y)
     case @affichage
     when Affichage::MENU
-      menu = Menu.new(WIDTH, HEIGHT)
-      menu.hover(mouse_x,mouse_y)
-      @affichage = Input.menu
+      menu = Menu.new(WIDTH, HEIGHT, mouse_x, mouse_y)
+      @affichage = menu.next_page(@affichage)
     when Affichage::GAME
       b = Board.new(8, WIDTH, HEIGHT)
       b.hover(mouse_x, mouse_y)
       @affichage = Input.game
+    when Affichage::QUIT
+      close
     end
   end
 end

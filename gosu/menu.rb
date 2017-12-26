@@ -3,16 +3,23 @@ require_relative 'button'
 include Gosu
 
 class Menu
-  def initialize(width, height)
-    header = Buton.new('Battle Legend', height / 4, width, 0, 0)
-    start = Buton.new('Start', height / 8, width, 0, header.next_pos_y)
-    quit = Buton.new('Quit', height / 8, width, 0, start.next_pos_y)
-    @button = [header, start, quit]
+  def initialize(width, height, mouse_x, mouse_y)
+    @button = []
+    @mouse_x = mouse_x
+    @mouse_y = mouse_y
+    @button << Buton.new('Battle Legend', height / 4, width, 0, 0                      , Affichage::MENU)
+    @button << Buton.new('Start'        , height / 8, width, 0, @button.last.next_pos_y, Affichage::GAME)
+    @button << Buton.new('Quit'         , height / 8, width, 0, @button.last.next_pos_y, Affichage::QUIT)
   end
 
-  def hover(mouse_x, mouse_y)
+  def next_page(current_page)
     @button.each do |button|
-      button.hover(mouse_x, mouse_y)
+      button.hover(@mouse_x, @mouse_y)
+      return button.link if button.click?(@mouse_x, @mouse_y)
     end
+    current_page
   end
+
+  def center(width, button_width)
+    return (width-button_width)/2
 end

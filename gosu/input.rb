@@ -1,9 +1,4 @@
 
-module Affichage
-  MENU = 1
-  GAME = 2
-end
-
 class Input
   def initialize; end
 
