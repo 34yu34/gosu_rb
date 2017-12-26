@@ -8,5 +8,6 @@ dep:
 	libopenal-dev \
 	libsndfile1-dev \
 	libmpg123-dev \
-	libgmp-dev
+	libgmp-dev \
+	ruby
 	bundle install
