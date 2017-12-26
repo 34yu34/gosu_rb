@@ -1,7 +1,10 @@
 require 'rubygems'
 require 'gosu'
 require_relative 'board'
+require_relative 'menu'
 require_relative 'mouse'
+require_relative 'input'
+
 include Gosu
 
 class Game < Window
@@ -11,11 +14,19 @@ class Game < Window
   def initialize
     super WIDTH, HEIGHT
     self.caption = 'Battle Legend'
+    @affichage = Affichage::MENU
   end
 
   def draw
-    b = Board.new(8, WIDTH, HEIGHT)
-    b.hover(mouse_x, mouse_y)
-    Mouse.new(mouse_x, mouse_y)
+    mouse = Mouse.new(mouse_x, mouse_y)
+    case @affichage
+    when Affichage::MENU
+      menu = Menu.new(WIDTH, HEIGHT)
+      @affichage = Input.menu
+    when Affichage::GAME
+      b = Board.new(8, WIDTH, HEIGHT)
+      b.hover(mouse_x, mouse_y)
+      @affichage = Input.game
+    end
   end
 end
