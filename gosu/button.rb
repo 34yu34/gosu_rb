@@ -12,10 +12,16 @@ class Buton
   end
 
   def next_pos_x
-    x2
+    @x2
   end
 
   def next_pos_y
-    y2
+    @y2
+  end
+
+  def hover(mouse_x, mouse_y)
+    if (mouse_x > @x1 && mouse_x < @x2) && (mouse_y < @y2 && mouse_y > @y1)
+      @image.draw(@x1, @y1, 1, 1, 1, Color::RED)
+    end
   end
 end

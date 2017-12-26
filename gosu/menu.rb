@@ -5,13 +5,14 @@ include Gosu
 class Menu
   def initialize(width, height)
     header = Buton.new('Battle Legend', height / 4, width, 0, 0)
-    start = Image.from_text('Start', height / 4, width, 0, 0)
-    quit = Image.from_text('Quit', height / 4, width: width, align: :center)
-    start.draw(0,height/4,0)
-    quit.draw(0,2*height/4,0)
+    start = Buton.new('Start', height / 8, width, 0, header.next_pos_y)
+    quit = Buton.new('Quit', height / 8, width, 0, start.next_pos_y)
+    @button = [header, start, quit]
   end
 
-  def next_button()
+  def hover(mouse_x, mouse_y)
+    @button.each do |button|
+      button.hover(mouse_x, mouse_y)
+    end
   end
-
 end

@@ -22,6 +22,7 @@ class Game < Window
     case @affichage
     when Affichage::MENU
       menu = Menu.new(WIDTH, HEIGHT)
+      menu.hover(mouse_x,mouse_y)
       @affichage = Input.menu
     when Affichage::GAME
       b = Board.new(8, WIDTH, HEIGHT)
