@@ -1,11 +1,11 @@
 require 'gosu'
-require_relative 'layer'
+require_relative 'module/layer'
 include Gosu
 
 class Buton
   def initialize(text, height, width, pos_x, pos_y, link)
     @image = Image.from_text(text, height, width: width, align: :center)
-    @image.draw(pos_x, pos_y, Layer.board)
+    @image.draw(pos_x, pos_y, Layer::BOARD)
     @x1 = pos_x
     @x2 = pos_x + width
     @y1 = pos_y
@@ -24,7 +24,7 @@ class Buton
   attr_reader :link
 
   def hover(mouse_x, mouse_y)
-    @image.draw(@x1, @y1, Layer.board, 1, 1, Color::RED) if inside?(mouse_x, mouse_y)
+    @image.draw(@x1, @y1, Layer::BOARD, 1, 1, Color::RED) if inside?(mouse_x, mouse_y)
   end
 
   def click?(mouse_x, mouse_y)
