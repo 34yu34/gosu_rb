@@ -11,6 +11,8 @@ class Tile
     @x2 = x2
     @y1 = y1
     @y2 = y2
+    @hover_color = Color.argb(0xff_808080)
+    
     draw_quad(x1, y1, colorBack,
               x1, y2, colorBack,
               x2, y2, colorBack,
@@ -28,11 +30,10 @@ class Tile
 
   def hover(mouse_x, mouse_y)
     if (mouse_x > @x1 && mouse_x < @x2) && (mouse_y > @y1 && mouse_y < @y2)
-      color = Color.argb(0xff_808080)
-      draw_quad(@x1, @y1, color,
-                @x1, @y2, color,
-                @x2, @y2, color,
-                @x2, @y1, color, Layer::BOARD)
+      draw_quad(@x1, @y1, @hover_color,
+                @x1, @y2, @hover_color,
+                @x2, @y2, @hover_color,
+                @x2, @y1, @hover_color, Layer::BOARD)
     end
   end
 end
