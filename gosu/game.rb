@@ -4,15 +4,9 @@ require_relative 'board'
 require_relative 'menu'
 require_relative 'mouse'
 require_relative 'input'
+require_relative 'module/affichage'
 
 include Gosu
-
-module Affichage
-  MENU = 1
-  GAME = 2
-  QUIT = 3
-end
-
 
 class Game < Window
   WIDTH = 1280

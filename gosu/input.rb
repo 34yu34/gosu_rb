@@ -1,3 +1,4 @@
+require_relative 'module/affichage'
 
 class Input
   def initialize; end

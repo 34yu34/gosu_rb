@@ -1,4 +1,5 @@
 require 'gosu'
+require_relative 'module/affichage'
 require_relative 'button'
 include Gosu
 
