@@ -8,7 +8,7 @@ require_relative 'module/affichage'
 
 include Gosu
 
-class Game < Window
+class Game_Window < Window
   WIDTH = 1280
   HEIGHT = 720
 

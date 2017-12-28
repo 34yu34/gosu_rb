@@ -1,3 +1,3 @@
-require_relative 'gosu/game'
+require_relative 'gosu/game_window'
 
-Game.new.show
+Game_Window.new.show
