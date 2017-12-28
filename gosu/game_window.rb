@@ -1,6 +1,6 @@
 require 'rubygems'
 require 'gosu'
-require_relative 'background'
+require_relative 'game'
 require_relative 'menu'
 require_relative 'mouse'
 require_relative 'input'
@@ -25,8 +25,8 @@ class Game_Window < Window
       menu = Menu.new(WIDTH, HEIGHT, mouse_x, mouse_y)
       @affichage = menu.next_page(@affichage)
     when Affichage::GAME
-      b = Background.new(WIDTH, HEIGHT, mouse_x, mouse_y)
-      b.hover
+      game = Game.new(WIDTH, HEIGHT, mouse_x, mouse_y)
+      game.hover
       @affichage = Input.game
     when Affichage::QUIT
       close
