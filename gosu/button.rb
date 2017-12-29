@@ -1,15 +1,11 @@
 require 'gosu'
 require_relative 'module/layer'
+require_relative 'static_text'
 include Gosu
 
-class Buton
+class Buton < Static_Text
   def initialize(text, height, width, pos_x, pos_y, link)
-    @image = Image.from_text(text, height, width: width, align: :center)
-    @image.draw(pos_x, pos_y, Layer::BOARD)
-    @x1 = pos_x
-    @x2 = pos_x + width
-    @y1 = pos_y
-    @y2 = pos_y + height
+    super(text, height, width, pos_x, pos_y)
     @link = link
   end
 
