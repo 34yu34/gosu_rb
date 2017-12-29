@@ -3,21 +3,14 @@ require_relative 'module/layer'
 require_relative 'static_text'
 include Gosu
 
-class Buton < Static_Text
+class Static_Button < Static_Text
+  attr_reader :link
+
   def initialize(text, height, width, pos_x, pos_y, link)
     super(text, height, width, pos_x, pos_y)
     @link = link
   end
 
-  def next_pos_x
-    @x2
-  end
-
-  def next_pos_y
-    @y2
-  end
-
-  attr_reader :link
 
   def hover(mouse_x, mouse_y)
     @image.draw(@x1, @y1, Layer::BOARD, 1, 1, Color::RED) if inside?(mouse_x, mouse_y)
