@@ -4,36 +4,36 @@ include Gosu
 
 
 class Tile
-  def initialize(x1, x2, y1, y2, colorBack, colorLine)
+  def initialize(left_x, right_x, top_y, bottom_y, colorBack, colorLine)
     @colorBack = colorBack
     @colorLine = colorLine
-    @x1 = x1
-    @x2 = x2
-    @y1 = y1
-    @y2 = y2
+    @left_x = left_x
+    @right_x = right_x
+    @top_y = top_y
+    @bottom_y = bottom_y
     @hover_color = Color.argb(0xff_808080)
-    
-    draw_quad(x1, y1, colorBack,
-              x1, y2, colorBack,
-              x2, y2, colorBack,
-              x2, y1, colorBack, Layer::BOARD)
 
-    draw_line(x1, y1, colorLine,
-              x1, y2, colorLine, Layer::BOARD)
-    draw_line(x1, y2, colorLine,
-              x2, y2, colorLine, Layer::BOARD)
-    draw_line(x2, y2, colorLine,
-              x2, y1, colorLine, Layer::BOARD)
-    draw_line(x2, y1, colorLine,
-              x1, y1, colorLine, Layer::BOARD)
+    draw_quad(left_x, top_y, colorBack,
+              left_x, bottom_y, colorBack,
+              right_x, bottom_y, colorBack,
+              right_x, top_y, colorBack, Layer::BOARD)
+
+    draw_line(left_x, top_y, colorLine,
+              left_x, bottom_y, colorLine, Layer::BOARD)
+    draw_line(left_x, bottom_y, colorLine,
+              right_x, bottom_y, colorLine, Layer::BOARD)
+    draw_line(right_x, bottom_y, colorLine,
+              right_x, top_y, colorLine, Layer::BOARD)
+    draw_line(right_x, top_y, colorLine,
+              left_x, top_y, colorLine, Layer::BOARD)
   end
 
   def hover(mouse_x, mouse_y)
-    if (mouse_x > @x1 && mouse_x < @x2) && (mouse_y > @y1 && mouse_y < @y2)
-      draw_quad(@x1, @y1, @hover_color,
-                @x1, @y2, @hover_color,
-                @x2, @y2, @hover_color,
-                @x2, @y1, @hover_color, Layer::BOARD)
+    if (mouse_x > @left_x && mouse_x < @right_x) && (mouse_y > @top_y && mouse_y < @bottom_y)
+      draw_quad(@left_x, @top_y, @hover_color,
+                @left_x, @bottom_y, @hover_color,
+                @right_x, @bottom_y, @hover_color,
+                @right_x, @top_y, @hover_color, Layer::BOARD)
     end
   end
 end

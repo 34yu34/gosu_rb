@@ -11,11 +11,11 @@ class Board
     @tile = Array.new(nb_col) { Array.new(nb_col) { nil } }
     (0...nb_col).each do |i|
       (0...nb_col).each do |j|
-        x1 = i * @width_x + start_x + (i == 0 ? 1 : 0)
-        x2 = (i + 1) * @width_x + start_x
-        y1 = j * @width_y ++ start_y+ (j == 0 ? 1 : 0)
-        y2 = (j + 1) * @width_y + start_y
-        @tile[i][j - 1] = Tile.new(x1, x2, y1, y2, colorBack, colorLine)
+        left_x = i * @width_x + start_x + (i == 0 ? 1 : 0)
+        right_x = (i + 1) * @width_x + start_x
+        top_y = j * @width_y ++ start_y+ (j == 0 ? 1 : 0)
+        bottom_y = (j + 1) * @width_y + start_y
+        @tile[i][j - 1] = Tile.new(left_x, right_x, top_y, bottom_y, colorBack, colorLine)
       end
     end
   end
