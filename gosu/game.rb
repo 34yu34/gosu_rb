@@ -1,5 +1,7 @@
 require_relative 'background'
 require_relative 'board'
+require_relative 'player'
+
 class Game
   BOARD_SIZE = 8
 
@@ -14,6 +16,8 @@ class Game
     board_height = height - 2 * player_space
     @background = Background.new(width,height)
     @board = Board.new(BOARD_SIZE, board_width, board_height, side_space, player_space)
+    @player = Player.new(width/2,height/2,Color::GREEN)
+    @player.draw
   end
 
   def hover

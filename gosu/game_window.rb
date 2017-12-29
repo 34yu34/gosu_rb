@@ -26,7 +26,6 @@ class Game_Window < Window
       @affichage = menu.next_page(@affichage)
     when Affichage::GAME
       game = Game.new(WIDTH, HEIGHT, mouse_x, mouse_y)
-      game.hover
       @affichage = Input.game
     when Affichage::QUIT
       close
