@@ -10,7 +10,7 @@ class Player
   def initialize(pos_x, pos_y, color)
     @x = pos_x
     @y = pos_y
-    @angle = 0
+    @angle = 180
     @color = color
     find_corner_pos
   end
@@ -36,12 +36,12 @@ class Player
   end
 
   def turn_right
-    @angle -= ANGLE_SPEED
+    @angle += ANGLE_SPEED
     @angle %= 360
   end
 
   def turn_left
-    @angle += ANGLE_SPEED
+    @angle -= ANGLE_SPEED
     @angle %= 360
   end
 
