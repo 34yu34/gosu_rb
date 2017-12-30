@@ -16,6 +16,19 @@ class Game_Window < Window
     super WIDTH, HEIGHT
     self.caption = 'Battle Legend'
     @affichage = Affichage::MENU
+    @game = Game.new(WIDTH, HEIGHT)
+  end
+
+  def update
+    case @affichage
+    when Affichage::GAME
+      if !@game.play
+        @affichage = Affichage::MENU
+      end
+    when Affichage::MENU
+    when Affichage::QUIT
+      close
+    end
   end
 
   def draw
@@ -25,10 +38,7 @@ class Game_Window < Window
       menu = Menu.new(WIDTH, HEIGHT, mouse_x, mouse_y)
       @affichage = menu.next_page(@affichage)
     when Affichage::GAME
-      game = Game.new(WIDTH, HEIGHT, mouse_x, mouse_y)
-      @affichage = Input.game
-    when Affichage::QUIT
-      close
+      @game.draw(mouse_x, mouse_y)
     end
   end
 end

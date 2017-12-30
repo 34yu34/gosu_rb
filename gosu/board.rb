@@ -27,4 +27,12 @@ class Board
       end
     end
   end
+
+  def draw
+    @tile.each do |col|
+      col.each do |tile|
+        tile.draw
+      end
+    end
+  end
 end

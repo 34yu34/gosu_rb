@@ -12,20 +12,22 @@ class Tile
     @top_y = top_y
     @bottom_y = bottom_y
     @hover_color = Color.argb(0xff_808080)
+  end
 
-    draw_quad(left_x, top_y, colorBack,
-              left_x, bottom_y, colorBack,
-              right_x, bottom_y, colorBack,
-              right_x, top_y, colorBack, Layer::BOARD)
+  def draw
+    draw_quad(@left_x, @top_y, @colorBack,
+              @left_x, @bottom_y, @colorBack,
+              @right_x, @bottom_y, @colorBack,
+              @right_x, @top_y, @colorBack, Layer::BOARD)
 
-    draw_line(left_x, top_y, colorLine,
-              left_x, bottom_y, colorLine, Layer::BOARD)
-    draw_line(left_x, bottom_y, colorLine,
-              right_x, bottom_y, colorLine, Layer::BOARD)
-    draw_line(right_x, bottom_y, colorLine,
-              right_x, top_y, colorLine, Layer::BOARD)
-    draw_line(right_x, top_y, colorLine,
-              left_x, top_y, colorLine, Layer::BOARD)
+    draw_line(@left_x, @top_y, @colorLine,
+              @left_x, @bottom_y, @colorLine, Layer::BOARD)
+    draw_line(@left_x, @bottom_y, @colorLine,
+              @right_x, @bottom_y, @colorLine, Layer::BOARD)
+    draw_line(@right_x, @bottom_y, @colorLine,
+              @right_x, @top_y, @colorLine, Layer::BOARD)
+    draw_line(@right_x, @top_y, @colorLine,
+              @left_x, @top_y, @colorLine, Layer::BOARD)
   end
 
   def hover(mouse_x, mouse_y)
