@@ -1,5 +1,6 @@
 require 'gosu'
-
+require_relative 'magic'
+require_relative 'module/layer'
 include Gosu
 
 class Player
@@ -12,6 +13,7 @@ class Player
     @y = pos_y
     @angle = 180
     @color = color
+    @magic = []
     find_corner_pos
   end
 
@@ -20,6 +22,7 @@ class Player
     draw_triangle(@top_x, @top_y, @color,
                   @right_x, @right_y, @color,
                   @left_x, @left_y, @color, Layer::PLAYER)
+    @magic.each{|magic| magic.draw}
   end
 
   def find_corner_pos
@@ -59,5 +62,13 @@ class Player
 
   def radian
     @angle * Math::PI / 180.0 + Math::PI / 2
+  end
+
+  def update
+    @magic.each{|magic| magic.update}
+  end
+
+  def shoot
+    @magic << Magic.new(@top_x, @top_y, @angle)
   end
 end

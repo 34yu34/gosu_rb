@@ -2,6 +2,7 @@ require_relative 'module/affichage'
 require_relative 'player'
 
 class Input
+  @@space_press = false
   def initialize; end
 
   def self.action(player)
@@ -16,6 +17,14 @@ class Input
     end
     if button_down?(KB_D) || button_down?(KB_RIGHT)
       player.turn_right
+    end
+    if button_down?(KB_SPACE)
+      if !@@space_press
+        player.shoot
+        @@space_press = true
+      end
+    else
+      @@space_press = false
     end
   end
 

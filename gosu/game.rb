@@ -34,6 +34,7 @@ class Game
 
   def play
     Input.action(@player)
+    @player.update
     return !Input.pause?
   end
 
