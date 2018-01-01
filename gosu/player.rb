@@ -26,7 +26,13 @@ class Player
     draw_triangle(@top_x, @top_y, @COLOR,
                   @right_x, @right_y, @COLOR,
                   @left_x, @left_y, @COLOR, Layer::PLAYER)
-    @magic.each{|magic| magic.draw}
+    @magic.each do |magic|
+      if !magic.outside?
+        magic.draw
+      else
+        @magic.delete(magic)
+      end
+    end
   end
 
   def find_corner_pos
