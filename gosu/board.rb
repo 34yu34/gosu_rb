@@ -1,21 +1,21 @@
 require 'gosu'
 require_relative 'tile'
+require_relative 'module/dimension'
 include Gosu
+include Dimension
 
 class Board
-  def initialize(nb_col, width, height, start_x, start_y)
-    colorLine = Color::RED
-    colorBack = Color::WHITE
-    @width_x = width / nb_col
-    @width_y = height / nb_col
-    @tile = Array.new(nb_col) { Array.new(nb_col) { nil } }
-    (0...nb_col).each do |i|
-      (0...nb_col).each do |j|
-        left_x = i * @width_x + start_x + (i == 0 ? 1 : 0)
-        right_x = (i + 1) * @width_x + start_x
-        top_y = j * @width_y ++ start_y+ (j == 0 ? 1 : 0)
-        bottom_y = (j + 1) * @width_y + start_y
-        @tile[i][j - 1] = Tile.new(left_x, right_x, top_y, bottom_y, colorBack, colorLine)
+  def initialize
+    width_tile_y = BOARD_HEIGHT / BOARD_NB_COL
+    width_tile_x = BOARD_WIDTH / BOARD_NB_COL
+    @tile = Array.new(BOARD_NB_COL) { Array.new(BOARD_NB_COL) { nil } }
+    (0...BOARD_NB_COL).each do |i|
+      (0...BOARD_NB_COL).each do |j|
+        left_x = i * width_tile_x + BOARD_SIDE_SPACE + (i == 0 ? 1 : 0)
+        right_x = (i + 1) * width_tile_x + BOARD_SIDE_SPACE
+        top_y = j * width_tile_y + + BOARD_TOP_SPACE + (j == 0 ? 1 : 0)
+        bottom_y = (j + 1) * width_tile_y + BOARD_TOP_SPACE
+        @tile[i][j - 1] = Tile.new(left_x, right_x, top_y, bottom_y)
       end
     end
   end
@@ -30,9 +30,7 @@ class Board
 
   def draw
     @tile.each do |col|
-      col.each do |tile|
-        tile.draw
-      end
+      col.each(&:draw)
     end
   end
 end

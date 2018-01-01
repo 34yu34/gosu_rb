@@ -5,18 +5,18 @@ require_relative 'menu'
 require_relative 'mouse'
 require_relative 'input'
 require_relative 'module/affichage'
+require_relative 'module/dimension'
 
+include Dimension
 include Gosu
 
 class Game_Window < Window
-  WIDTH = 1280
-  HEIGHT = 720
-
   def initialize
-    super WIDTH, HEIGHT
+    #var
+    super WINDOW_WIDTH, WINDOW_HEIGHT
     self.caption = 'Battle Legend'
     @affichage = Affichage::MENU
-    @game = Game.new(WIDTH, HEIGHT)
+    @game = Game.new
   end
 
   def update
@@ -35,7 +35,7 @@ class Game_Window < Window
     mouse = Mouse.new(mouse_x, mouse_y)
     case @affichage
     when Affichage::MENU
-      menu = Menu.new(WIDTH, HEIGHT, mouse_x, mouse_y)
+      menu = Menu.new(mouse_x, mouse_y)
       @affichage = menu.next_page(@affichage)
     when Affichage::GAME
       @game.draw(mouse_x, mouse_y)

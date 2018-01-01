@@ -1,17 +1,17 @@
 require_relative 'board'
 require_relative 'module/layer'
+require_relative 'module/dimension'
 class Background
+  attr_reader :COLOR
 
-  def initialize(width, height)
-    @color = Color::CYAN
-    @width = width
-    @height = height
+  def initialize()
+    @COLOR = Color::CYAN
   end
 
-  def draw()
-    draw_quad(0, 0, @color,
-              @width, 0, @color,
-              @width, @height, @color,
-              0, @height, @color, Layer::BACKGROUND)
+  def draw
+    draw_quad(0, 0, @COLOR,
+              WINDOW_WIDTH, 0, @COLOR,
+              WINDOW_WIDTH, WINDOW_HEIGHT, @COLOR,
+              0, WINDOW_HEIGHT, @COLOR, Layer::BACKGROUND)
   end
 end

@@ -2,15 +2,15 @@ require 'gosu'
 require_relative 'module/affichage'
 require_relative 'static_button'
 include Gosu
-
+include Dimension
 class Menu
-  def initialize(width, height, mouse_x, mouse_y)
+  def initialize(mouse_x, mouse_y)
     @line = []
     @mouse_x = mouse_x
     @mouse_y = mouse_y
-    @line << Static_Text.new('Battle Legend', height / 4, width, 0, 0)
-    @line << Static_Button.new('Start', height / 8, width / 4, center(width, width / 4), @line.last.next_pos_y, Affichage::GAME)
-    @line << Static_Button.new('Quit', height / 8, width / 4, center(width, width / 4), @line.last.next_pos_y, Affichage::QUIT)
+    @line << Static_Text.new('Battle Legend', WINDOW_HEIGHT / 4, WINDOW_WIDTH, 0, 0)
+    @line << Static_Button.new('Start', WINDOW_HEIGHT / 8, WINDOW_WIDTH / 4, center(WINDOW_WIDTH, WINDOW_WIDTH / 4), @line.last.next_pos_y, Affichage::GAME)
+    @line << Static_Button.new('Quit', WINDOW_HEIGHT / 8, WINDOW_WIDTH / 4, center(WINDOW_WIDTH, WINDOW_WIDTH / 4), @line.last.next_pos_y, Affichage::QUIT)
   end
 
   def next_page(current_page)

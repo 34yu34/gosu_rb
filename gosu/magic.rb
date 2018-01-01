@@ -1,11 +1,13 @@
 require_relative 'module/layer'
 
 class Magic
-  SIZE = 10
-  SPEED = 15
-  COLOR = Color::BLUE
 
   def initialize(pos_x, pos_y, angle)
+    #const
+    @SIZE = 10
+    @SPEED = 15
+    @COLOR = Color::BLUE
+    #var
     @pos_x = pos_x
     @pos_y = pos_y
     @angle = angle

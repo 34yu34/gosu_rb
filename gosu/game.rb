@@ -1,23 +1,15 @@
 require_relative 'background'
+require_relative 'module/dimension'
 require_relative 'board'
 require_relative 'player'
 require_relative 'input'
 
-
 class Game
-  BOARD_SIZE = 8
-
-  def initialize(width, height)
-    @width = width
-    @height = height
+  def initialize
     @mouse_x = @mouse_y = 0
-    player_space = height / 10
-    side_space = width / 10
-    board_width = width - 2 * side_space
-    board_height = height - 2 * player_space
-    @background = Background.new(width, height)
-    @board = Board.new(BOARD_SIZE, board_width, board_height, side_space, player_space)
-    @player = Player.new(width / 2, height / 2, Color::GREEN)
+    @background = Background.new
+    @board = Board.new
+    @player = Player.new(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
   end
 
   def hover
@@ -35,7 +27,6 @@ class Game
   def play
     Input.action(@player)
     @player.update
-    return !Input.pause?
+    !Input.pause?
   end
-
 end
