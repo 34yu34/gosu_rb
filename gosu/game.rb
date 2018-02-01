@@ -2,6 +2,7 @@ require_relative 'background'
 require_relative 'module/dimension'
 require_relative 'board'
 require_relative 'player'
+require_relative 'ennemi'
 require_relative 'input'
 
 class Game
@@ -10,6 +11,8 @@ class Game
     @background = Background.new
     @board = Board.new
     @player = Player.new(WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2)
+    @ennemi = []
+    @ennemi << Ennemi.new(400, 400, 20)
   end
 
   def hover
@@ -22,11 +25,13 @@ class Game
     @background.draw
     @board.draw
     @player.draw
+    @ennemi.each{|ennemi| ennemi.draw}
   end
 
   def play
     Input.action(@player)
     @player.update
+    @ennemi.each{|ennemi| ennemi.update}
     !Input.pause?
   end
 end
